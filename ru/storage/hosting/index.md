@@ -32,10 +32,16 @@ http(s)://[!KEYREF s3-web-host]/<имя_корзины>
 - Имя корзины должно в точности совпадать с именем домена.
 - Необходимо настроить алиас для корзины у своего провайдера DNS или на собственном DNS сервере.
 
-    Например, для домена `example.com` необходимо добавить запись
+    Например, для домена `example.com` необходимо сначала добавить запись для `www.example.com`
 
     ```
-    example.com CNAME example.com.[!KEYREF s3-web-host]
+    www.example.com CNAME example.com.[!KEYREF s3-web-host]
+    ```
+Затем через любой онлайн сервис узнать присвоенный IP-адрес для `www.example.com`
+После этого можно добавить вторую запись для корня домена `example.com` (Тип записи A)
+
+    ```
+    example.com A xxx.xxx.xxx.xxx
     ```
 
 >[!NOTE]
